@@ -30,7 +30,7 @@
       <p>JavaScript Samples</p>
     </div><!-- /.container -->
   </footer>
-  <div id="pravacy-panel">
+  <div id="privacy-panel">
     <p>当サイトではユーザーエクスペリエンス向上のためクッキーを使用しております。また、匿名でアクセス状況のデータの収集をしております、詳しい情報は当サイトのプライバシーポリシーをご覧ください。</p>
     <button id="agreebtn">承認する</button>
   </div>
@@ -39,12 +39,13 @@
     'use strict'
 
     const agree = Cookies.get('cookie-agree');
+    const panel = document.getElementById('privacy-panel');
     if (agree === 'yes') {
-      console.log('クッキーを確認しました。');
+      document.body.removeChild(panel);
     } else {
-      console.log('クッキーを確認できませんでした');
       document.getElementById('agreebtn').onclick = function (){
         Cookies.set('cookie-agree', 'yes', {expires: 7});
+        document.body.removeChild(panel);
       };
     }
 
